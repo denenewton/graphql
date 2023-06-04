@@ -1,0 +1,29 @@
+type User {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  fullName: String
+  email: String
+  active: Boolean!
+}
+
+input UserInput {
+  firstName: String
+  lastName: String
+  email: String
+  active: Boolean
+}
+
+type Query {                 # get the user information 
+  users: [User!]!            # get the users array
+  user(id: ID!): User!       # get just one user by ID
+  getUserByEmail(email: String): User! # get the user by email
+}
+
+type Mutation {
+  createUser(data: UserInput!): User! #create on user by giving the data
+  updateUser(id: ID!, data: UserInput!): User!
+  deleteUser(id: ID!): Boolean
+}
+
+
