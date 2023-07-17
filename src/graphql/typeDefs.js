@@ -1,12 +1,9 @@
-const { loadFilesSync } = require('@graphql-tools/load-files')
-const { mergeTypeDefs } = require('@graphql-tools/merge')
-import path from 'path'
+import { mergeTypeDefs } from '@graphql-tools/merge';
+import { loadFilesSync } from '@graphql-tools/load-files'
+import path from 'path';
+  
+const typeArray = loadFilesSync(path.join(__dirname, 'types','*.gql'),{ extensions: ['gql'] })
 
-const typesArray = loadFilesSync(path.join(__dirname, 'schemas','*.gql'),{ extensions: ['gql'] })
+const typeDefs = mergeTypeDefs( typeArray)
 
-const typeDefs = mergeTypeDefs(typesArray)
-
-export default typeDefs
-
-
-
+export default  typeDefs

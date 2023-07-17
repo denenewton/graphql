@@ -1,0 +1,9 @@
+type Query {
+  movies(filter: filterMovies): [Movie]
+
+  movie(id: Int): Movie!
+
+  getMovieByTitle(title: String): Movie!
+  getMovieByGenre(genre: String): [Movie!]!
+  getMovieByYear(year: Int): [Movie!]!
+}

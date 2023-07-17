@@ -1,0 +1,11 @@
+enum Genres {
+  Adventure
+  Comedy
+  Romance
+  Fantasy
+  Action
+  Thriller
+  Drama
+  Teen
+  Science_Fiction
+}

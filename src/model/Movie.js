@@ -1,46 +1,45 @@
-import mongoose from "mongoose";
-
+import mongoose, { models } from "mongoose";
 
 const Schema = mongoose.Schema({
-    title: {
-        type:String,
-        required:true
-    },
-    genre: {
-        type:String,
-        required:true
-    },
-    year: {
-        type:Number,
-        required:true
-    },
-    director:  {
-        type:String,
-        required:true
-    },
-    urlImage:{
-        type:String,
-        
-    },
-    urlMovie:{
-        type:String,
-       
-    },
-    description: {
-        type:String,
-        required:true
-    },
-    
-})
+  
+  id: Number,
+  
+  title: {
+    type: String,
+    required: true,
+  },
+  genre: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: Number,
+    required: true,
+  },
+  popularity: {
+    type: Number,
+  },
+  director: {
+    type: String,
+    required: true,
+  },
+  urlImage: {
+    type: String,
+  },
+  
+  backdrop_path: {
+   type: String,
+  },
 
-export default mongoose.model('Movie' , Schema)
+  urlMovie: {
+    type: String,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
 
-/**
- *  title:String!
-    genre: String!
-    year: Int!
-    director: String!
-    urlImage: String
-    urlMovie: String
-    description: String!
- */
+
+const Movie = models.Movie || mongoose.model("Movie", Schema);
+export default Movie;

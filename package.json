@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"commonjs",
+  "type": "commonjs",
   "scripts": {
-    "start":  "node dist/index.js",
-    "dev": "nodemon --exec babel-node src/index.js -e js,gql",
-    "cop":"ncp src/graphql/schemas  dist/graphql/schemas",
+    "start": "node dist/index.js",
+    "dev": "nodemon -w src/*.js --exec babel-node src/index.js -e js",
+    "cop": "ncp src/graphql/types  dist/graphql/types",
     "build": "babel src -d dist && npm run cop"
   },
   "engines": {
@@ -17,14 +17,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@graphql-tools/load-files": "7.0.0",
-    "@graphql-tools/merge": "9.0.0",
-    "apollo-server": "^3.12.0",
+    "@graphql-tools/load-files": "^7.0.0",
+    "@graphql-tools/merge": "^9.0.0",
     "dotenv": "^16.1.0",
     "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-yoga": "^4.0.3",
     "mongoose": "^7.2.2",
     "ncp": "^2.0.0"
-    
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
