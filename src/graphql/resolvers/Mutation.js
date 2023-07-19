@@ -6,6 +6,7 @@ import {
   verifyUniqueFields,
 } from "../../utils/hasErrors"
 
+
 export const Mutation = {
   createMovie: async (_, { data }, { Movie }) => {
     if (hasErrosMovie(data)) return hasErrosMovie(data);

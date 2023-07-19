@@ -74,8 +74,8 @@ export function verifyGenreField(genre) {
 }
 
 export async function verifyUniqueFields(Movie, data) {
-  const id = await Movie.findOne({ id: data.id });
-  const title = await Movie.findOne({ title: data.title });
+  const id = await Movie.findOne({ id: data?.id });
+  const title = await Movie.findOne({ title: data?.title });
 
   if (id && title) {
     return {
