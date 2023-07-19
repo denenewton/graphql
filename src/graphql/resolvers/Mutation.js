@@ -4,7 +4,7 @@ import {
   ifMovieExists,
   payloadToSend,
   verifyUniqueFields,
-} from "../../utils/hasErrors"
+} from "../../utils/HasErrors"
 
 
 export const Mutation = {
