@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon -w src/*.js --exec babel-node src/index.js -e js",
+    "dev": "nodemon --exec babel-node src/index.js ",
     "cop": "ncp src/graphql/types  dist/graphql/types",
     "build": "babel src -d dist && npm run cop"
   },

@@ -1,11 +1,11 @@
 import "dotenv/config";
 import { createYoga, createSchema } from "graphql-yoga";
-import { createServer } from "node:http";
-import typeDefs from "./graphql/typeDefs";
+import Castmember from "./model/Castmember";
 import resolvers from "./graphql/resolvers";
+import typeDefs from "./graphql/typeDefs";
+import { createServer } from "node:http";
 import conn from "./utils/connectMongo";
 import Movie from "./model/Movie";
-import Castmember from "./model/Castmember";
 
 const port = parseInt(process.env.PORT) || 4000;
 

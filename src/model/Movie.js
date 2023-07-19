@@ -7,6 +7,7 @@ const Schema = mongoose.Schema({
   title: {
     type: String,
     required: true,
+    unique: true
   },
   genre: {
     type: String,

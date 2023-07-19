@@ -1,22 +1,22 @@
 type Movie {
-  _id: ID!
-  title: String!
-  genre: Genres!
-  year: Int!
+  id: ID!
+  title: String
+  genre: Genres
+  year: Int
   popularity: Float
-  director: String!
+  director: String
   urlImage: String
   backdrop_path: String
   urlMovie: String
-  description: String!
+  description: String
   cast: [Actor]
-  id: Int
+
 }
 
 interface Person {
+  id: ID!
   adult: Boolean
   gender: Int
-  id: Int
   known_for_department: String
   name: String
   original_name: String
@@ -26,11 +26,10 @@ interface Person {
 }
 
 type Actor implements Person {
-  _id: ID!
+  id: ID!
   movieID: Int
   adult: Boolean
   gender: Int
-  id: Int
   known_for_department: String
   name: String
   original_name: String
@@ -42,3 +41,8 @@ type Actor implements Person {
   order: Int
 }
 
+type Error {
+  message: String
+}
+
+union MoviePayload = Movie | Error

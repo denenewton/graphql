@@ -1,5 +1,5 @@
  input MovieInput {
-    id: Int
+    id: ID
     title: String
     genre: String
     year: Int
@@ -12,10 +12,10 @@
   }
 
    input ActorInput {
+    id: ID
     movieID: Int
     adult: Boolean
     gender: Int
-    id: Int
     known_for_department: String
     name: String
     original_name: String

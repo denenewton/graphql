@@ -1,5 +1,9 @@
 type Mutation {
-  createMovie(data: MovieInput!): Movie!
-  updateMovie(id: ID!, data: MovieInput!): Movie!
-  deleteMovie(id: ID!): Boolean
+  createMovie(data: MovieInput!): MoviePayload
+  updateMovie(id: ID!, data: MovieInput!): MoviePayload
+  deleteMovie(id: ID!): MoviePayload
 }
+
+
+
+

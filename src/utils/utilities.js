@@ -33,11 +33,11 @@ export async function filtering(filter, Movie) {
         title: { $regex: filter?.title, $options: "i" },
       });
       if (filter.year) {
-        movies = movies.filter((mov) => mov.year === filter?.year );
+        movies = movies.filter((mov) => mov.year === filter?.year);
       }
       if (filter?.genre) {
-        const regex = new RegExp(filter?.genre, 'i');
-        movies =  movies.filter( mov => mov.genre?.match(regex))
+        const regex = new RegExp(filter?.genre, "i");
+        movies = movies.filter((mov) => mov.genre?.match(regex));
       }
       return movies;
     }
@@ -47,15 +47,81 @@ export async function filtering(filter, Movie) {
       });
 
       if (filter.year) {
-        movies = movies.filter((mov) => mov.year === filter?.year );
+        movies = movies.filter((mov) => mov.year === filter?.year);
       }
       return movies;
     }
     if (filter.year) {
-      movies = await Movie?.find({ year:  filter?.year, });
+      movies = await Movie?.find({ year: filter?.year });
       return movies;
     }
   }
   movies = await Movie?.find();
   return movies;
+}
+
+export function hasErrosMovie(data) {
+  var onlyNumbers = new RegExp("^[0-9]+$");
+  if (
+    !data.title ||
+    !data.year ||
+    !data.genre ||
+    !data.director ||
+    !data.description
+  ) {
+    return {
+      __typename: "Error",
+      message:
+        "This field is required:  title, year, genre, director, description.",
+    };
+  }
+
+  if (verifyIdField(data.id)) return verifyIdField(data.id);
+
+  if(verifyGenreField(data.genre)) return verifyGenreField(data.genre)
+
+  if (onlyNumbers.test(data.year)) {
+    const date = new Date();
+    if (data.year < 1985 || data.year > date.getFullYear()) {
+      return {
+        __typename: "Error",
+        message: "Year need to be [1985 - 2023].",
+      };
+    }
+  }
+  return false;
+}
+
+export function verifyIdField(id) {
+  var onlyNumbers = new RegExp("^[0-9]+$");
+  if (!onlyNumbers.test(id)) {
+    return {
+      __typename: "Error",
+      message:
+        "This ID is invalid! it needs to contain only numbers [0 - 9] with no signal!!",
+    };
+  }
+  return false;
+}
+
+export function verifyGenreField(genre) {
+  const genres = [
+    "Adventure",
+    "Comedy",
+    "Romance",
+    "Fantasy",
+    "Action",
+    "Thriller",
+    "Drama",
+    "Teen",
+    "Science_Fiction",
+  ];
+
+  if (!genres.find((g) => g === genre)) {
+    return {
+      __typename: "Error",
+      message:
+        "Genre just can be one of these: Adventure,  Comedy,  Romance, Fantasy,  Action,  Thriller, Drama, Teen, Science_Fiction",
+    };
+  }
 }

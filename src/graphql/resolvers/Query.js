@@ -7,6 +7,7 @@ export const  Movie =  {
     },    
 }
 
+
 export const Query = {
 
     movies: async (_, { filter }, { Movie }) => await filtering(filter, Movie),
