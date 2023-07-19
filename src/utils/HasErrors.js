@@ -23,6 +23,7 @@ export function verifyYearField(year){
   }
 }
 
+
 export  function verifyRequiredFields(data){
   if (
     !data.title ||
