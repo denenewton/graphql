@@ -1,4 +1,4 @@
-import { filtering } from '../../utils/utilities'
+import getPage, { filtering } from '../../utils/utilities'
 
 export const  Movie =  {
     cast: async (parent, args, { Castmember}) =>{
@@ -20,4 +20,9 @@ export const Query = {
 
     getMovieByYear: async (_, {year},  {Movie}) => await Movie.find({year: year}),
     
+    getPage: async (_, { filter, page, perPage }, { Movie }) => {
+        const movies = await filtering(filter, Movie)
+        const infoPage =  await getPage(movies, page, perPage);
+        return infoPage;
+      },
 }

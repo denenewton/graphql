@@ -10,7 +10,15 @@ type Movie {
   urlMovie: String
   description: String
   cast: [Actor]
+}
 
+type Info {
+  items: [Movie]
+  prev: Int
+  next: Int
+  page: Int
+  first: Int
+  last: Int
 }
 
 interface Person {

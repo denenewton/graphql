@@ -4,4 +4,5 @@ type Query {
   getMovieByTitle(title: String): Movie!
   getMovieByGenre(genre: String): [Movie!]!
   getMovieByYear(year: Int): [Movie!]!
+  getPage(filter:filterMovies, page: Int, perPage: Int): Info!
 }
